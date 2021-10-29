@@ -1,7 +1,12 @@
+import { Fragment } from 'react';
+import AppRouter from "./Routes/AppRouter";
+
 function App() {
-  return <div className="App">
-    <h1>test</h1>
-  </div>;
+  return (
+    <Fragment>
+      <AppRouter />
+    </Fragment>
+  );
 }
 
 export default App;
