@@ -1,0 +1,40 @@
+#home {
+  height: 100vh;
+  background: transparent
+    linear-gradient(60deg, $color-primary-dark 0%, #000000 100%) 0% 0% no-repeat
+    padding-box;
+  opacity: 1;
+}
+
+#home .container {
+  display: grid;
+  grid-template-rows: minmax(7rem, 9vh) 91vh;
+  grid-template-columns: 0.6fr 0.4fr;
+}
+
+#home .container .right-side {
+  grid-row: 1 / -1;
+  grid-column: 2 / -1;
+
+  background-image: url("../../img/spider-man-home\ 2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#home .container .navbar {
+  background-color: $color-dark-2;
+  ul {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: 2rem;
+    .logo {
+      width: 17rem;
+      margin-top: 0.7rem;
+    }
+    li {
+    }
+  }
+}
