@@ -2,7 +2,7 @@
 $color-primary: #da3831;
 $color-primary-dark: #4c1310;
 
-$color-secondary: #000; 
+$color-secondary: #000;
 
 $color-dark-1: #202020;
 $color-dark-2: #151515;
@@ -13,12 +13,24 @@ $color-grey-light-2: #bbbbbb;
 $color-grey-dark-1: #838383;
 $color-grey-dark-2: #707070;
 
-// FONT VARIABLES
-$font-primary: 'Nunito', sans-serif;
-$font-display: 'Josefin Sans', sans-serif;
+/*------------------- FONT-FAMILY -------------------*/
+
+@mixin googleFonts($font) {
+  @import url("https://fonts.googleapis.com/css2?family=#{$font}");
+}
+
+@include googleFonts(
+  "family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400"
+);
+@include googleFonts(
+  "family=Nunito:ital,wght@0,200;0,300;0,400;0,700;1,200;1,300;1,400;1,700&display=swap"
+);
+
+$font-primary: "Nunito", sans-serif;
+$font-display: "Lato", sans-serif;
 
 // RESPONSIVE BREAKPOINTS
-$bp-largest: 75em;   // 1200px
-$bp-large: 62.5em;   // 1000px
-$bp-medium: 50em;    // 800px;
-$bp-small: 37.5em;    // 600px;
+$bp-largest: 75em; // 1200px
+$bp-large: 62.5em; // 1000px
+$bp-medium: 50em; // 800px;
+$bp-small: 37.5em; // 600px;

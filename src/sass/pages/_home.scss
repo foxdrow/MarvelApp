@@ -10,31 +10,54 @@
   display: grid;
   grid-template-rows: minmax(7rem, 9vh) 91vh;
   grid-template-columns: 0.6fr 0.4fr;
-}
 
-#home .container .right-side {
-  grid-row: 1 / -1;
-  grid-column: 2 / -1;
-
-  background-image: url("../../img/spider-man-home\ 2.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-#home .container .navbar {
-  background-color: $color-dark-2;
-  ul {
-    height: 100%;
+  .left-side {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    font-size: 2rem;
-    .logo {
-      width: 17rem;
-      margin-top: 0.7rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    .heading-1 {
+      font-size: 7rem;
+      text-shadow: 0px 6px 6px $color-primary;
+      padding-left: 5vw;
     }
-    li {
+    p {
+      padding-left: 10vw;
+      max-width: 37vw;
+    }
+    .btn-box {
+      padding-left: 10vw;
+    }
+    & > * {
+      padding-bottom: 4vh;
+    }
+
+  }
+
+  .right-side {
+    grid-row: 1 / -1;
+    grid-column: 2 / -1;
+
+    background-image: url("../../img/spider-man-home\ 2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .navbar {
+    background-color: $color-dark-2;
+    ul {
+      height: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      font-size: 2rem;
+      .logo {
+        width: 17rem;
+        margin-top: 0.7rem;
+      }
+      li {
+      }
     }
   }
 }
