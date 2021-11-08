@@ -1,7 +1,7 @@
-import React from "react";
 import Navbar from "../components/Navbar";
-import CharactersList from "../components/Characters/CharactersList";
 import TitleBanner from "../components/Characters/TitleBanner";
+import FeaturedCharacters from "../components/FeaturedCharacters";
+import CharactersList from "../components/Characters/CharactersList";
 
 export default function Characters() {
   return (
@@ -9,6 +9,8 @@ export default function Characters() {
       <section className="container">
         <Navbar />
         <TitleBanner/>
+        {/* <FeaturedCharacters/> */}
+        <CharactersList/>
       </section>
     </section>
   );

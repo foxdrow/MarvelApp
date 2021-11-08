@@ -9,7 +9,7 @@ export default function Navbar(props: any) {
 
   if (redirect && redirect !== location.pathname) {
     return <Redirect to={{ pathname: redirect }} />;
-  }
+  } else if (redirect) window.location.reload();
 
   return (
     <nav className="navbar">
