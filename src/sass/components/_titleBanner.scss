@@ -1,0 +1,22 @@
+.title-banner {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: rgba(#151515, 85%) 0% 0% no-repeat padding-box;
+  height: 40vh;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 40vh;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .heading-1 {
+      margin-bottom: 1rem;
+  }
+}

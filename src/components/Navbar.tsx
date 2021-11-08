@@ -20,7 +20,7 @@ export default function Navbar(props: any) {
           </a>
         </li>
         <li>
-          <a href="#" onClick={() => setRedirect(`/characters`)}>
+          <a onClick={() => setRedirect(`/characters`)}>
             CHARACTERS
           </a>
         </li>
