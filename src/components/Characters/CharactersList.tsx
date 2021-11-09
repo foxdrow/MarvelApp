@@ -1,20 +1,23 @@
 import React, { useEffect, useState, FormEvent } from "react";
-import md5 from "md5";
+import apiKey from "../../utils/getApiKey";
 
-const { REACT_APP_MARVEL_API_PUBLIC_KEY, REACT_APP_MARVEL_API_PRIVATE_KEY } =
-  process.env;
 export default function CharactersList() {
   const [characters, setCharacters] = useState<Array<any>>([]);
   const [charactersTotal, setCharactersTotal] = useState<string>("loading");
+  const [charactersParams, setCharactersParams] = useState({
+    nameStartsWith: "",
+    orderBy: "name",
+    limit: "12",
+  });
 
   const recoveryCharacters = async () => {
-    const time = Date.now();
-    const apiKey = `&apikey=${REACT_APP_MARVEL_API_PUBLIC_KEY}&hash=${md5(
-      `${time}${REACT_APP_MARVEL_API_PRIVATE_KEY}${REACT_APP_MARVEL_API_PUBLIC_KEY}`
-    )}&ts=${time}`;
-
     const res = await fetch(
-      `https://gateway.marvel.com/v1/public/characters?limit=30${apiKey}`
+      `https://gateway.marvel.com/v1/public/characters?${
+        charactersParams.nameStartsWith &&
+        `&nameStartsWith=${charactersParams.nameStartsWith}`
+      }&orderBy=${charactersParams.orderBy}&limit=${
+        charactersParams.limit
+      }${apiKey}`
     );
     const data: any = await res.json();
     return data.data;
@@ -43,9 +46,9 @@ export default function CharactersList() {
   }
 
   const handleSearch = (e: any) => {
-    e.preventDefault()
-    console.log(e.target.search.value)
-  }
+    e.preventDefault();
+    console.log(e.target.search.value);
+  };
 
   return (
     <section className="characters-list">
@@ -56,7 +59,6 @@ export default function CharactersList() {
         </form>
         <div className="left-border"></div>
         <p>{charactersTotal}</p>
-
       </div>
       <div>{charactersList}</div>
     </section>
