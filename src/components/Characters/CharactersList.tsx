@@ -4,7 +4,7 @@ import md5 from "md5";
 const { REACT_APP_MARVEL_API_PUBLIC_KEY, REACT_APP_MARVEL_API_PRIVATE_KEY } =
   process.env;
 export default function CharactersList() {
-  const [characters, setCharacters] = useState<Array<string>>([]);
+  const [characters, setCharacters] = useState<Array<any>>([]);
 
   const recoveryCharacters = async () => {
     const time = Date.now();
@@ -19,17 +19,24 @@ export default function CharactersList() {
     return data.data;
   };
 
-  // useEffect(() => {
-  //   recoveryCharacters().then((data) => {
-  //     setCharacters(data.results);
-  //   });
-  // }, []);
+  useEffect(() => {
+    recoveryCharacters().then((data) => {
+      setCharacters(data.results);
+    });
+  }, []);
 
   let charactersList;
   if (characters) {
-    console.log(characters);
+    if (characters[0]) {
+    }
     charactersList = characters.map((data: any) => {
-      return <div>{data.name}</div>;
+      const ImgPath = `${data.thumbnail.path}/portrait_xlarge.${data.thumbnail.extension}`;
+      return (
+        <div>
+          <div>{data.name}</div>
+          <img src={ImgPath} />
+        </div>
+      );
     });
   }
 
