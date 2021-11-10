@@ -21,10 +21,28 @@
         }
       }
     }
-    .left-border {
-        grid-column: 6 / -1;
 
-        border-bottom: 2px $color-grey-light-1 solid;
+    .left-border {
+      grid-column: 6 / -1;
+
+      border-bottom: 2px $color-grey-light-1 solid;
+    }
+
+    .orderBy {
+      grid-column: 9 / -1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-right: 1rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      &_label {
+        margin-right: 1rem;
+        color: $color-grey-dark-1;
+      }
+      &_btn {
+        color: $color-primary;
+      }
     }
   }
 }

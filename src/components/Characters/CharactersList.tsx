@@ -9,6 +9,7 @@ export default function CharactersList() {
     orderBy: "name",
     limit: "12",
   });
+  const [orderByTextButton, setOrderByTextButton] = useState("A-Z");
 
   const recoveryCharacters = async () => {
     const res = await fetch(
@@ -23,12 +24,12 @@ export default function CharactersList() {
     return data.data;
   };
 
-  // useEffect(() => {
-  //   recoveryCharacters().then((data) => {
-  //     setCharacters(data.results);
-  //     setCharactersTotal(data.total);
-  //   });
-  // }, []);
+  useEffect(() => {
+    recoveryCharacters().then((data) => {
+      setCharacters(data.results);
+      setCharactersTotal(data.total);
+    });
+  }, [charactersParams]);
 
   let charactersList;
   if (characters) {
@@ -47,7 +48,20 @@ export default function CharactersList() {
 
   const handleSearch = (e: any) => {
     e.preventDefault();
-    console.log(e.target.search.value);
+    setCharactersParams({
+      ...charactersParams,
+      nameStartsWith: e.target.search.value,
+    });
+  };
+
+  const handleOrderBy = (e: any) => {
+    e.preventDefault();
+    charactersParams.orderBy === "name"
+      ? setCharactersParams({ ...charactersParams, orderBy: "-name" })
+      : setCharactersParams({ ...charactersParams, orderBy: "name" });
+    orderByTextButton === "A-Z"
+      ? setOrderByTextButton("Z-A")
+      : setOrderByTextButton("A-Z");
   };
 
   return (
@@ -59,6 +73,16 @@ export default function CharactersList() {
         </form>
         <div className="left-border"></div>
         <p>{charactersTotal}</p>
+        <div className="orderBy">
+          <p className="orderBy_label">SORT BY</p>
+          <button
+            className="orderBy_btn"
+            value={charactersParams.orderBy}
+            onClick={(e) => handleOrderBy(e)}
+          >
+            {orderByTextButton}
+          </button>
+        </div>
       </div>
       <div>{charactersList}</div>
     </section>
