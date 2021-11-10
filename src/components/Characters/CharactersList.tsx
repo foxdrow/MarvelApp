@@ -38,9 +38,9 @@ export default function CharactersList() {
     charactersList = characters.map((data: any) => {
       const ImgPath = `${data.thumbnail.path}/portrait_xlarge.${data.thumbnail.extension}`;
       return (
-        <div>
+        <div key={data.id}>
+          <img style={{"width": "100%"}} src={ImgPath} />
           <div>{data.name}</div>
-          <img src={ImgPath} />
         </div>
       );
     });
@@ -84,7 +84,7 @@ export default function CharactersList() {
           </button>
         </div>
       </div>
-      <div>{charactersList}</div>
+      <div className="characters-list-gallery">{charactersList}</div>
     </section>
   );
 }
