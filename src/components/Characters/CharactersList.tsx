@@ -7,7 +7,7 @@ export default function CharactersList() {
   const [charactersParams, setCharactersParams] = useState({
     nameStartsWith: "",
     orderBy: "name",
-    limit: "12",
+    limit: "42",
   });
   const [orderByTextButton, setOrderByTextButton] = useState("A-Z");
 
@@ -34,13 +34,16 @@ export default function CharactersList() {
   let charactersList;
   if (characters) {
     if (characters[0]) {
+      console.log(characters[0])
     }
     charactersList = characters.map((data: any) => {
-      const ImgPath = `${data.thumbnail.path}/portrait_xlarge.${data.thumbnail.extension}`;
+      const ImgPath = `${data.thumbnail.path}/standard_xlarge.${data.thumbnail.extension}`;
       return (
-        <div key={data.id}>
-          <img style={{"width": "100%"}} src={ImgPath} />
-          <div>{data.name}</div>
+        <div key={data.id} className="characters-card">
+          <img src={ImgPath} />
+          <div className="characters-card_bot">
+            <h4 className="heading-4 character-name">{data.name}</h4>
+          </div>
         </div>
       );
     });
