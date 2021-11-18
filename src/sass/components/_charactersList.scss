@@ -46,7 +46,7 @@
     }
   }
 
-  &-gallery {
+  &_gallery {
     margin-top: 7rem;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -58,11 +58,12 @@
     flex-direction: column;
     color: #fff;
     overflow: hidden;
+    border-radius: 0 0 2.5rem 0;
+    box-shadow: 0px 3px 3px #00000074;
 
     &_bot {
       background-color: $color-dark-2;
       height: 15.5rem;
-      border-radius: 0 0 2.5rem 0;
       border-top: 5px solid $color-primary;
       .character-name {
         margin: 2rem 0 0 2rem;
@@ -78,6 +79,20 @@
       }
       .characters-card_bot {
         background-color: $color-primary;
+      }
+    }
+  }
+
+  &_pagination {
+    margin: 5rem 0 5rem 0;
+    display: flex;
+    justify-content: center;
+    .btn {
+      color: #fff;
+      background-color: $color-dark-2;
+      border-top: 2px solid $color-primary;
+      &_prev {
+        margin-right: 2vw;
       }
     }
   }

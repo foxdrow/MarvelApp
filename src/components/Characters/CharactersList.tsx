@@ -1,4 +1,4 @@
-import React, { useEffect, useState, FormEvent } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import apiKey from "../../utils/getApiKey";
 
 export default function CharactersList() {
@@ -7,9 +7,13 @@ export default function CharactersList() {
   const [charactersParams, setCharactersParams] = useState({
     nameStartsWith: "",
     orderBy: "name",
-    limit: "42",
+    limit: 42,
+    offset: 0,
   });
   const [orderByTextButton, setOrderByTextButton] = useState("A-Z");
+  const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
+
+  const charactersListRef: React.MutableRefObject<any> = useRef();
 
   const recoveryCharacters = async () => {
     const res = await fetch(
@@ -18,7 +22,7 @@ export default function CharactersList() {
         `&nameStartsWith=${charactersParams.nameStartsWith}`
       }&orderBy=${charactersParams.orderBy}&limit=${
         charactersParams.limit
-      }${apiKey}`
+      }&offset=${charactersParams.offset}${apiKey}`
     );
     const data: any = await res.json();
     return data.data;
@@ -28,14 +32,16 @@ export default function CharactersList() {
     recoveryCharacters().then((data) => {
       setCharacters(data.results);
       setCharactersTotal(data.total);
+      console.log(Object.keys(data.results).length);
+      if (Object.keys(data.results).length < 42) {
+        setNextBtnDisabled(true);
+      }
     });
   }, [charactersParams]);
 
   let charactersList;
   if (characters) {
-    if (characters[0]) {
-      console.log(characters[0])
-    }
+    console.log(characters[0])
     charactersList = characters.map((data: any) => {
       const ImgPath = `${data.thumbnail.path}/standard_xlarge.${data.thumbnail.extension}`;
       return (
@@ -54,6 +60,7 @@ export default function CharactersList() {
     setCharactersParams({
       ...charactersParams,
       nameStartsWith: e.target.search.value,
+      offset: 0,
     });
   };
 
@@ -67,8 +74,26 @@ export default function CharactersList() {
       : setOrderByTextButton("A-Z");
   };
 
+  const onClickNextButton = () => {
+    setCharactersParams({
+      ...charactersParams,
+      offset: charactersParams.offset + 42,
+    });
+    charactersListRef.current.scrollIntoView();
+  };
+
+  const onClickPrevButton = () => {
+    if (charactersParams.offset >= 42) {
+      setCharactersParams({
+        ...charactersParams,
+        offset: charactersParams.offset - 42,
+      });
+      charactersListRef.current.scrollIntoView();
+    }
+  };
+
   return (
-    <section className="characters-list">
+    <section className="characters-list" ref={charactersListRef}>
       <h2 className="heading-2">MARVEL CHARACTERS LIST</h2>
       <div className="characters-list-searching">
         <form onSubmit={(e) => handleSearch(e)}>
@@ -87,7 +112,19 @@ export default function CharactersList() {
           </button>
         </div>
       </div>
-      <div className="characters-list-gallery">{charactersList}</div>
+      <div className="characters-list_gallery">{charactersList}</div>
+      <div className="characters-list_pagination">
+        <button className="btn btn_prev" onClick={(e) => onClickPrevButton()}>
+          Prev
+        </button>
+        <button
+          disabled={nextBtnDisabled}
+          className="btn btn_next"
+          onClick={(e) => onClickNextButton()}
+        >
+          Next
+        </button>
+      </div>
     </section>
   );
 }
