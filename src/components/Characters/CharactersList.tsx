@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import apiKey from "../../utils/getApiKey";
+import { Redirect, useLocation } from "react-router-dom";
 
 export default function CharactersList() {
   const [characters, setCharacters] = useState<Array<any>>([]);
@@ -12,6 +13,7 @@ export default function CharactersList() {
   });
   const [orderByTextButton, setOrderByTextButton] = useState("A-Z");
   const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
+  const [redirect, setRedirect] = useState("");
 
   const charactersListRef: React.MutableRefObject<any> = useRef();
 
@@ -41,11 +43,11 @@ export default function CharactersList() {
 
   let charactersList;
   if (characters) {
-    console.log(characters[0])
+    console.log(characters[0]);
     charactersList = characters.map((data: any) => {
       const ImgPath = `${data.thumbnail.path}/standard_xlarge.${data.thumbnail.extension}`;
       return (
-        <div key={data.id} className="characters-card">
+        <div onClick={() => setRedirect(`/character/${data.id}`)} key={data.id} className="characters-card">
           <img src={ImgPath} />
           <div className="characters-card_bot">
             <h4 className="heading-4 character-name">{data.name}</h4>
@@ -92,6 +94,9 @@ export default function CharactersList() {
     }
   };
 
+  if (redirect && redirect) {
+    return <Redirect to={{ pathname: redirect }} />;
+  }
   return (
     <section className="characters-list" ref={charactersListRef}>
       <h2 className="heading-2">MARVEL CHARACTERS LIST</h2>
