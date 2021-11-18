@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import Navbar from "../components/Navbar";
 import apiKey from "../utils/getApiKey";
 
 export default function Character(props: { match: any }) {
@@ -14,14 +15,17 @@ export default function Character(props: { match: any }) {
 
   useEffect(() => {
     recoveryCharacters().then((data) => {
-        console.log(data.results[0]);
+      console.log(data.results[0]);
       setCharacter(data.results[0]);
     });
   }, []);
   return (
-      <section id="character">
-          <h1>{character.name}</h1>
-          <p>{character.description}</p>
+    <section id="character">
+      <section className="container">
+        <Navbar />
+        <h1>{character.name}</h1>
+        <p>{character.description}</p>
       </section>
-  )
+    </section>
+  );
 }
