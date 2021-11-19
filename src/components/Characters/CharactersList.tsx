@@ -34,7 +34,6 @@ export default function CharactersList() {
     recoveryCharacters().then((data) => {
       setCharacters(data.results);
       setCharactersTotal(data.total);
-      console.log(Object.keys(data.results).length);
       if (Object.keys(data.results).length < 42) {
         setNextBtnDisabled(true);
       }
@@ -43,11 +42,10 @@ export default function CharactersList() {
 
   let charactersList;
   if (characters) {
-    console.log(characters[0]);
     charactersList = characters.map((data: any) => {
       const ImgPath = `${data.thumbnail.path}/standard_xlarge.${data.thumbnail.extension}`;
       return (
-        <div onClick={() => setRedirect(`/character/${data.id}`)} key={data.id} className="characters-card">
+        <div onClick={() => setRedirect(`/characters/${data.id}`)} key={data.id} className="characters-card">
           <img src={ImgPath} />
           <div className="characters-card_bot">
             <h4 className="heading-4 character-name">{data.name}</h4>

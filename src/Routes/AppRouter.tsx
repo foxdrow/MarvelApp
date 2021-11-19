@@ -11,7 +11,7 @@ export default function AppRouter() {
                 <Switch>
                     <Route path="/" component={Home} exact={true} />
                     <Route path="/characters" component={Characters} exact={true} />
-                    <Route path="/character/:id" component={Character} exact={true} />
+                    <Route path="/characters/:id" component={Character} exact={true} />
                 </Switch>
             </Fragment>
         </BrowserRouter>
