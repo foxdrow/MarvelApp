@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
 export default function CharacterBanner(props: any) {
-  useEffect(() => {
-    console.log(props);
-  }, []);
+  // useEffect(() => {
+  //   console.log(props);
+  // }, []);
   return (
     <section className="character-banner">
       <img src={props.imgPath} alt="" />

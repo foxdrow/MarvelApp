@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import CharacterBanner from "../components/Character/CharacterBanner";
+import CharacterOverview from "../components/Character/CharacterOverview";
 import Navbar from "../components/Navbar";
 import apiKey from "../utils/getApiKey";
 
@@ -27,6 +28,7 @@ export default function Character(props: { match: any }) {
       <section className="container">
         <Navbar />
         <CharacterBanner imgPath={imgPath} name={character.name} />
+        <CharacterOverview description={character.description} />
         {/* <h1>{character.name}</h1>
         <p>{character.description}</p> */}
       </section>
