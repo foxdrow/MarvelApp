@@ -4,6 +4,7 @@ import Characters from "../pages/Characters";
 import Character from "../pages/Character";
 import Home from "../pages/Home"
 import Comics from "../pages/Comics";
+import Creators from "../pages/Creators";
 
 export default function AppRouter() {
     return (
@@ -14,6 +15,7 @@ export default function AppRouter() {
                     <Route path="/characters" component={Characters} exact={true} />
                     <Route path="/characters/:id" component={Character} exact={true} />
                     <Route path="/comics" component={Comics} exact={true} />
+                    <Route path="/creators" component={Creators} exact={true} />
                 </Switch>
             </Fragment>
         </BrowserRouter>

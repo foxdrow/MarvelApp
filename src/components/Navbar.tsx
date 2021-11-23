@@ -28,7 +28,7 @@ export default function Navbar(props: any) {
           <a onClick={() => setRedirect(`/comics`)}>COMICS</a>
         </li>
         <li>
-          <a href="#">MOVIES</a>
+          <a onClick={() => setRedirect(`/creators`)}>CREATORS</a>
         </li>
         <li>
           <a href="#">TV SHOWS</a>
