@@ -10,6 +10,9 @@ export default function ComicsList() {
     orderBy: "title",
     limit: 42,
     offset: 0,
+    format: "comic",
+    issueNumber: "",
+    characters: "",
   });
   const [orderByTextButton, setOrderByTextButton] = useState("A-Z");
   const [nextBtnDisabled, setNextBtnDisabled] = useState(false);
@@ -20,11 +23,15 @@ export default function ComicsList() {
   const recoveryComics = async () => {
     const res = await fetch(
       `https://gateway.marvel.com/v1/public/comics?${
+        comicsParams.format && `&format=${comicsParams.format}`
+      }${
+        comicsParams.issueNumber && `&issueNumber=${comicsParams.issueNumber}`
+      }${comicsParams.characters && `&characters=${comicsParams.characters}`}${
         comicsParams.titleStartsWith &&
         `&titleStartsWith=${comicsParams.titleStartsWith}`
-      }&orderBy=${comicsParams.orderBy}&limit=${
-        comicsParams.limit
-      }&offset=${comicsParams.offset}${apiKey}`
+      }&orderBy=${comicsParams.orderBy}&limit=${comicsParams.limit}&offset=${
+        comicsParams.offset
+      }${apiKey}`
     );
     const data: any = await res.json();
     return data.data;
@@ -45,7 +52,11 @@ export default function ComicsList() {
     comicsList = comics.map((data: any) => {
       const ImgPath = `${data.thumbnail.path}/standard_xlarge.${data.thumbnail.extension}`;
       return (
-        <div onClick={() => setRedirect(`/comics/${data.id}`)} key={data.id} className="comics-card">
+        <div
+          onClick={() => setRedirect(`/comics/${data.id}`)}
+          key={data.id}
+          className="comics-card"
+        >
           <img src={ImgPath} />
           <div className="comics-card_bot">
             <h4 className="heading-4 comic-name">{data.title}</h4>
@@ -59,8 +70,10 @@ export default function ComicsList() {
     e.preventDefault();
     setComicsParams({
       ...comicsParams,
-      titleStartsWith: e.target.search.value,
+      titleStartsWith: e.target.title.value,
       offset: 0,
+      issueNumber: e.target.issue.value,
+      characters: e.target.characters.value,
     });
   };
 
@@ -100,7 +113,10 @@ export default function ComicsList() {
       <h2 className="heading-2">MARVEL COMICS LIST</h2>
       <div className="comics-list-searching">
         <form onSubmit={(e) => handleSearch(e)}>
-          <input type="text" name="search" placeholder="SEARCH" />
+          <input type="text" name="title" placeholder="TITLE" />
+          <input type="text" name="issue" placeholder="ISSUE NO" />
+          <input type="text" name="characters" placeholder="CHARACTERS ID" />
+          <button style={{"display":"none"}}></button>
         </form>
         <div className="left-border"></div>
         <p>{comicsTotal}</p>
