@@ -29,8 +29,6 @@ export default function Character(props: { match: any }) {
         <Navbar />
         <CharacterBanner imgPath={imgPath} name={character.name} />
         <CharacterOverview description={character.description} />
-        {/* <h1>{character.name}</h1>
-        <p>{character.description}</p> */}
       </section>
     </section>
   );
