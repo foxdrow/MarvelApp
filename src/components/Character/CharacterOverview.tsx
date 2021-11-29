@@ -5,7 +5,17 @@ export default function CharacterOverview(props: any) {
         <h2 className="heading-2">Biography</h2>
       </div>
       <div className="character-overview_right">
-        <p className="character-description">{props.description}</p>
+        <div className="character-overview_right-item">
+          <h3 className="heading-3">Character ID :</h3>
+          <p>{props.id}</p>
+        </div>
+        <div className="character-overview_right-item">
+          <h3 className="heading-3">Description :</h3>
+          <p>
+            {!props.description && `No description available for this character`}
+            {props.description}
+          </p>
+        </div>
       </div>
     </section>
   );

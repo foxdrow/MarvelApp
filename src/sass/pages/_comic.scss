@@ -166,8 +166,6 @@
 
     &_right {
       grid-column: 3 / -1;
-      display: grid;
-      grid-template-columns: 1fr;
       margin-top: 10rem;
       display: grid;
       grid-template-columns: repeat(3, 1fr);

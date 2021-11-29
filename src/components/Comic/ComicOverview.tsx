@@ -32,7 +32,7 @@ export default function ComicOverview(props: any) {
           </p>
         </div>
         <div className="comic-overview_right-item">
-          <h3 className="heading-3">Issue No :</h3>
+          <h3 className="heading-3">Issue Nb :</h3>
           <p>{props.issueNumber}</p>
         </div>
         <div className="comic-overview_right-item">

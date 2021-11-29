@@ -17,9 +17,7 @@ export default function ComicImages(props: any) {
       <div className="comic-images_left">
         <h2 className="heading-2">Gallery</h2>
       </div>
-      <div className="comic-images_right">
-      <div>{imagesList}</div>
-      </div>
+      <div className="comic-images_right">{imagesList}</div>
     </section>
   );
 }
