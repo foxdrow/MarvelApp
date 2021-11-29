@@ -1,4 +1,11 @@
+import { useEffect, useState } from "react";
+
 export default function ComicOverview(props: any) {
+  useEffect(() => {
+    console.log(props.characters);
+  }, []);
+
+
   return (
     <section className="comic-overview">
       <div className="comic-overview_left">
@@ -7,7 +14,10 @@ export default function ComicOverview(props: any) {
       <div className="comic-overview_right">
         <div className="comic-description comic-overview_right-item">
           <h3 className="heading-3">Description :</h3>
-          <p>{props.description}</p>
+          <p>
+            {!props.description && `No description available for this item`}
+            {props.description}
+          </p>
         </div>
         <div className="comic-id comic-overview_right-item">
           <h3 className="heading-3">Comic ID :</h3>
@@ -15,7 +25,10 @@ export default function ComicOverview(props: any) {
         </div>
         <div className="comic-overview_right-item">
           <h3 className="heading-3">Pages Count :</h3>
-          <p>{props.pages}</p>
+          <p>
+            {props.pages === 0 && `No`}
+            {props.pages !== 0 && props.pages}
+          </p>
         </div>
         <div className="comic-overview_right-item">
           <h3 className="heading-3">Issue No :</h3>
