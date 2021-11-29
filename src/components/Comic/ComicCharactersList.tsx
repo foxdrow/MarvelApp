@@ -25,8 +25,14 @@ export default function ComicCharactersList(props: any) {
     });
   }
   return (
-    <section className="characters-list">
-      <div className="characters-list_gallery">{charactersList}</div>
+    <section className="comic-characters-list">
+      <div className="comic-characters-list_left">
+        <h2 className="heading-2">Characters</h2>
+      </div>
+      <div className="comic-characters-list_right">
+        <div className="comic-characters-list_right_gallery">{charactersList}</div>
+      </div>
+      <div style={{"marginBottom": "10rem"}}></div>
     </section>
   );
 }

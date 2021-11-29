@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function ComicOverview(props: any) {
-  useEffect(() => {
-    console.log(props.characters);
-  }, []);
-
+  useEffect(() => {});
 
   return (
     <section className="comic-overview">
@@ -18,6 +15,10 @@ export default function ComicOverview(props: any) {
             {!props.description && `No description available for this item`}
             {props.description}
           </p>
+        </div>
+        <div className="comic-overview_right-item">
+          <h3 className="heading-3">Series name :</h3>
+          <p>{props.series.name}</p>
         </div>
         <div className="comic-id comic-overview_right-item">
           <h3 className="heading-3">Comic ID :</h3>

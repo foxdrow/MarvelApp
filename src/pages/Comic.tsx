@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import ComicBanner from "../components/Comic/ComicBanner";
 import ComicCharactersList from "../components/Comic/ComicCharactersList";
+import ComicImages from "../components/Comic/ComicImages";
 import ComicOverview from "../components/Comic/ComicOverview";
 import Navbar from "../components/Navbar";
 import apiKey from "../utils/getApiKey";
@@ -8,6 +9,8 @@ import apiKey from "../utils/getApiKey";
 export default function Comic(props: { match: any }) {
   const id = props.match.params.id;
   const [comic, setComic] = useState<any>({});
+  const [series, setSeries] = useState<any>({});
+  const [images, setImages] = useState<any>();
   const [comicCharacters, setComicCharacters] = useState<any>();
   const [imgPath, setImagePath] = useState("");
   const [date, setDate] = useState("");
@@ -30,6 +33,8 @@ export default function Comic(props: { match: any }) {
     recoveryComic().then((data) => {
       console.log(data.results[0]);
       setComic(data.results[0]);
+      setSeries(data.results[0].series);
+      setImages(data.results[0].images);
       setImagePath(
         `${data.results[0].thumbnail.path}/standard_fantastic.${data.results[0].thumbnail.extension}`
       );
@@ -38,7 +43,6 @@ export default function Comic(props: { match: any }) {
   }, []);
   useEffect(() => {
     recoveryComicCharacters().then((data) => {
-      console.log(data.results);
       setComicCharacters(data.results);
     });
   }, []);
@@ -51,12 +55,12 @@ export default function Comic(props: { match: any }) {
           description={comic.description}
           id={comic.id}
           date={date}
-          images={comic.images}
           issueNumber={comic.issueNumber}
           pages={comic.pageCount}
           prices={comic.prices}
-          series={comic.series}
+          series={series}
         />
+        <ComicImages images={images} />
         <ComicCharactersList characters={comicCharacters} />
       </section>
     </section>
