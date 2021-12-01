@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Home/HomeNavbar";
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 

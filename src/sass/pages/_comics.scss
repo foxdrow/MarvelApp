@@ -2,25 +2,6 @@
   display: grid;
   grid-template-columns: 1fr minmax(min-content, 120rem) 1fr;
 
-  .navbar {
-    grid-column: 1 / -1;
-    background-color: $color-dark-2;
-    color: #fff;
-    ul {
-      height: 100%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-
-      font-size: 1.8rem;
-      .logo {
-        width: 15rem;
-        margin-top: 0.7rem;
-        margin-right: 30vw;
-      }
-    }
-  }
-
   .title-banner {
     &::before {
       background: url("../../img/71fy3STvD1L._AC_SL1183_.jpg") no-repeat center

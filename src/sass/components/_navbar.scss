@@ -1,0 +1,50 @@
+.navbar {
+  grid-column: 1 / -1;
+  background-color: $color-dark-2;
+  color: #fff;
+  ul {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.8rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      flex-direction: column;
+    }
+    .logo {
+      width: 15rem;
+      margin-top: 0.7rem;
+      margin-right: 30vw;
+      @media only screen and (max-width: $bp-medium) {
+        width: 20rem;
+        margin: 0;
+        padding: 1rem;
+      }
+    }
+    .navbar-icon_profile {
+      @media only screen and (max-width: $bp-medium) {
+        display: none;
+      }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      .navbar-link {
+        width: 100%;
+        width: 100%;
+        text-align: center;
+        border-bottom: 0.2rem solid #fff;
+        padding: 1.5rem 0;
+        &:hover {
+          cursor: pointer;
+        }
+        a {
+          font-size: 2.5rem;
+        }
+      }
+      .characters-link {
+        border-top: 0.2rem solid #fff;
+      }
+    }
+  }
+}
