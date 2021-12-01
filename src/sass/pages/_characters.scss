@@ -1,7 +1,7 @@
 #characters .container {
   display: grid;
   grid-template-rows: repeat(5, min-content);
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: 1fr minmax(min-content, 120rem) 1fr;
 
   .navbar {
     grid-column: 1 / -1;

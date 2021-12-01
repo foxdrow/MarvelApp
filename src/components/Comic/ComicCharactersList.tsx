@@ -32,7 +32,6 @@ export default function ComicCharactersList(props: any) {
       <div className="comic-characters-list_right">
         <div className="comic-characters-list_right_gallery">{charactersList}</div>
       </div>
-      <div style={{"marginBottom": "10rem"}}></div>
     </section>
   );
 }

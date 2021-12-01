@@ -31,9 +31,6 @@ export default function Navbar(props: any) {
           <a onClick={() => setRedirect(`/creators`)}>CREATORS</a>
         </li>
         <li>
-          <a href="#">TV SHOWS</a>
-        </li>
-        <li>
           <a href="#">
             <img src={Profile} className="Profile" alt="Profile" />
           </a>

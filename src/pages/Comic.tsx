@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import ComicBanner from "../components/Comic/ComicBanner";
 import ComicCharactersList from "../components/Comic/ComicCharactersList";
+import ComicCreatorList from "../components/Comic/ComicCreatorList";
 import ComicImages from "../components/Comic/ComicImages";
 import ComicOverview from "../components/Comic/ComicOverview";
 import Navbar from "../components/Navbar";
@@ -12,11 +13,19 @@ export default function Comic(props: { match: any }) {
   const [series, setSeries] = useState<any>({});
   const [images, setImages] = useState<any>();
   const [comicCharacters, setComicCharacters] = useState<any>();
+  const [comicCreator, setComicCreator] = useState<any>();
   const [imgPath, setImagePath] = useState("");
   const [date, setDate] = useState("");
   const recoveryComicCharacters = async () => {
     const res = await fetch(
       `https://gateway.marvel.com/v1/public/comics/${id}/characters?${apiKey}`
+    );
+    const data: any = await res.json();
+    return data.data;
+  };
+  const recoveryComicCreator = async () => {
+    const res = await fetch(
+      `https://gateway.marvel.com/v1/public/comics/${id}/creators?${apiKey}`
     );
     const data: any = await res.json();
     return data.data;
@@ -46,6 +55,11 @@ export default function Comic(props: { match: any }) {
       setComicCharacters(data.results);
     });
   }, []);
+  useEffect(() => {
+    recoveryComicCreator().then((data) => {
+      setComicCreator(data.results);
+    });
+  }, []);
   return (
     <section id="comic">
       <section className="container">
@@ -62,6 +76,7 @@ export default function Comic(props: { match: any }) {
         />
         <ComicImages images={images} />
         <ComicCharactersList characters={comicCharacters} />
+        <ComicCreatorList creators={comicCreator} />
       </section>
     </section>
   );
