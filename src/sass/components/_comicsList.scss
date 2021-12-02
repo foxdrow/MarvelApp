@@ -1,5 +1,18 @@
 .comics-list {
   grid-column: 3 / -3;
+  @media only screen and (max-width: $bp-largest) {
+    grid-column: 1 / -1;
+    margin: 0 10rem;
+  }
+  @media only screen and (max-width: $bp-large) {
+    margin: 0 5rem;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    margin: 0 2rem;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    margin: 0 .5rem;
+  }
 
   h2 {
     margin: 7rem 0;
@@ -51,6 +64,15 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
+    @media only screen and (max-width: $bp-large) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    @media only screen and (max-width: $bp-medium) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media only screen and (max-width: $bp-small) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .comics-card {
