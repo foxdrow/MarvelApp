@@ -19,19 +19,20 @@ export default function HomeNavbar(props: any) {
             <img src={Logo} className="logo" alt="logo" />
           </a>
         </li>
-        <li>
-          <a onClick={() => setRedirect(`/characters`)}>
-            CHARACTERS
-          </a>
+        <li
+          className="navbar-link characters-link"
+          onClick={() => setRedirect(`/characters`)}
+        >
+          <a>CHARACTERS</a>
+        </li>
+        <li className="navbar-link" onClick={() => setRedirect(`/comics`)}>
+          <a>COMICS</a>
+        </li>
+        <li className="navbar-link" onClick={() => setRedirect(`/creators`)}>
+          <a>CREATORS</a>
         </li>
         <li>
-          <a onClick={() => setRedirect(`/comics`)}>COMICS</a>
-        </li>
-        <li>
-          <a onClick={() => setRedirect(`/creators`)}>CREATORS</a>
-        </li>
-        <li>
-          <a href="#">
+          <a className="navbar-icon_profile" href="#">
             <img src={Profile} className="Profile" alt="Profile" />
           </a>
         </li>

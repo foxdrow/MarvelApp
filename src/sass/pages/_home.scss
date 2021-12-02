@@ -11,20 +11,33 @@
   display: grid;
   grid-template-rows: minmax(7rem, 9vh) 91vh;
   grid-template-columns: 0.6fr 0.4fr;
+  @media only screen and (max-width: $bp-large) {
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr;
+  }
 
   .left-side {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    @media only screen and (max-width: $bp-large) {
+      height: 70vh;
+    }
     .heading-1 {
       font-size: 7rem;
       text-shadow: 0px 6px 6px $color-primary;
       padding-left: 5vw;
+      @media only screen and (max-width: $bp-medium) {
+        font-size: 5rem;
+      }
     }
     p {
       padding-left: 10vw;
       max-width: 37vw;
+      @media only screen and (max-width: $bp-large) {
+        max-width: 80vw;
+      }
     }
     .btn-box {
       padding-left: 10vw;
@@ -41,10 +54,12 @@
     background-image: url("../../img/spider-man-home\ 2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    @media only screen and (max-width: $bp-large) {
+      display: none;
+    }
   }
 
   #home-navbar {
-    display: block;
     background-color: $color-dark-2;
     color: #fff;
     ul {
@@ -52,13 +67,43 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-
       font-size: 2rem;
+      @media only screen and (max-width: $bp-medium) {
+        flex-direction: column;
+        justify-content: flex-start;
+      }
       .logo {
         width: 17rem;
         margin-top: 0.7rem;
+        @media only screen and (max-width: $bp-medium) {
+          width: 20rem;
+          margin: 0;
+          padding: 1rem;
+        }
       }
-      li {
+      .navbar-icon_profile {
+        @media only screen and (max-width: $bp-medium) {
+          display: none;
+        }
+      }
+
+      @media only screen and (max-width: $bp-medium) {
+        .navbar-link {
+          width: 100%;
+          width: 100%;
+          text-align: center;
+          border-bottom: 0.2rem solid #fff;
+          padding: 1.5rem 0;
+          &:hover {
+            cursor: pointer;
+          }
+          a {
+            font-size: 2rem;
+          }
+        }
+        .characters-link {
+          border-top: 0.2rem solid #fff;
+        }
       }
     }
   }
