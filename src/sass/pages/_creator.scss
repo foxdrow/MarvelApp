@@ -13,9 +13,29 @@
     background-color: $color-dark-2;
     height: 40vh;
     border-bottom: 0.7rem solid $color-primary;
+    min-height: 37rem;
+    @media only screen and (max-width: $bp-medium) {
+      flex-direction: column;
+      height: 50vh;
+    }
+    @media only screen and (max-width: $bp-small) {
+      height: 40vh;
+    }
 
     img {
       height: 30vh;
+      @media only screen and (max-width: $bp-large) {
+        height: 30rem;
+      }
+      @media only screen and (max-width: $bp-medium) {
+        height: 50vw;
+        max-height: 34vh;
+      }
+    }
+    h1 {
+      @media only screen and (max-width: $bp-large) {
+        font-size: 3.5rem;
+      }
     }
   }
 
@@ -24,6 +44,10 @@
     margin-top: 10rem;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    @media only screen and (max-width: $bp-largest) {
+      display: flex;
+      flex-direction: column;
+    }
 
     &_left {
       grid-column: 1 / 3;
@@ -32,6 +56,9 @@
       h2 {
         margin-top: 1.7rem;
         color: $color-grey-dark-1;
+        @media only screen and (max-width: $bp-largest) {
+          margin-left: 2vw;
+        }
       }
     }
     &_right {
@@ -44,6 +71,10 @@
         display: grid;
         grid-template-columns: 25% 75%;
         margin-bottom: 4rem;
+        @media only screen and (max-width: $bp-large) {
+          display: flex;
+          flex-direction: column;
+        }
         h3 {
           background-color: $color-dark-1;
           border-radius: 1rem;
@@ -54,6 +85,9 @@
           font-weight: 600;
           font-style: oblique;
           color: #fff;
+          @media only screen and (max-width: $bp-largest) {
+            margin-left: 5vw;
+          }
         }
         p {
           height: fit-content;
@@ -62,6 +96,9 @@
           font-weight: 400;
           font-size: 1.7rem;
           color: $color-dark-1;
+          @media only screen and (max-width: $bp-large) {
+            margin: 3rem 10vw 0 10vw;
+          }
         }
       }
     }
@@ -71,6 +108,10 @@
     margin-top: 10rem;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    @media only screen and (max-width: $bp-large) {
+      display: flex;
+      flex-direction: column;
+    }
 
     &_left {
       grid-column: 1 / 3;
@@ -79,6 +120,9 @@
       h2 {
         margin-top: 1.7rem;
         color: $color-grey-dark-1;
+        @media only screen and (max-width: $bp-large) {
+          margin-left: 2vw;
+        }
       }
     }
 
@@ -88,6 +132,9 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
+      @media only screen and (max-width: $bp-large) {
+        margin: 10rem 3vw 0 3vw;
+      }
     }
   }
   .creator-comics-list {
@@ -102,6 +149,9 @@
       h2 {
         margin-top: 1.7rem;
         color: $color-grey-dark-1;
+        @media only screen and (max-width: $bp-largest) {
+          margin-left: 2vw;
+        }
       }
     }
 
@@ -113,6 +163,19 @@
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         gap: 1rem;
+        @media only screen and (max-width: $bp-largest) {
+          margin: 10rem 3vw 0 3vw;
+        }
+        @media only screen and (max-width: $bp-large) {
+          grid-template-columns: repeat(6, 1fr);
+          margin: 10rem 3vw 0 3vw;
+        }
+        @media only screen and (max-width: $bp-medium) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        @media only screen and (max-width: $bp-small) {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
     }
 
