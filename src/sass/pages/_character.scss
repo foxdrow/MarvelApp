@@ -129,6 +129,10 @@
         transform: rotate(45deg);
         background-color: #fff;
       }
+      &:hover {
+        background-color: $color-primary-dark;
+      }
+
     }
   }
   .character-gallery {
