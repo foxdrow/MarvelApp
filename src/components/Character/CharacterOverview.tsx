@@ -12,9 +12,19 @@ export default function CharacterOverview(props: any) {
         <div className="character-overview_right-item">
           <h3 className="heading-3">Description :</h3>
           <p>
-            {!props.description && `No description available for this character`}
+            {!props.description &&
+              `No description available for this character`}
             {props.description}
           </p>
+        </div>
+        <div className="character-overview_right-item">
+          <a
+            href={props.detail}
+            target="_blank"
+            className="character-overview-btn"
+          >
+            MORE DETAIL
+          </a>
         </div>
       </div>
     </section>

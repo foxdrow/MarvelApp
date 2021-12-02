@@ -16,6 +16,7 @@ export default function Comic(props: { match: any }) {
   const [comicCreator, setComicCreator] = useState<any>();
   const [imgPath, setImagePath] = useState("");
   const [date, setDate] = useState("");
+  const [detailUrl, setDetailUrl] = useState("")
   const recoveryComicCharacters = async () => {
     const res = await fetch(
       `https://gateway.marvel.com/v1/public/comics/${id}/characters?${apiKey}`
@@ -48,6 +49,7 @@ export default function Comic(props: { match: any }) {
         `${data.results[0].thumbnail.path}/standard_fantastic.${data.results[0].thumbnail.extension}`
       );
       setDate(data.results[0].dates[0].date.slice(0, 10));
+      setDetailUrl(data.results[0].urls[0].url)
     });
   }, []);
   useEffect(() => {
@@ -73,6 +75,7 @@ export default function Comic(props: { match: any }) {
           pages={comic.pageCount}
           prices={comic.prices}
           series={series}
+          detail={detailUrl}
         />
         <ComicImages images={images} />
         <ComicCharactersList characters={comicCharacters} />

@@ -12,6 +12,7 @@ export default function Character(props: { match: any }) {
   const [characterComics, setCharacterComics] = useState<any>();
   const [imgPath, setImagePath] = useState("");
   const [images, setImages] = useState("");
+  const [detailUrl, setDetailUrl] = useState("")
   const recoveryCharacter = async () => {
     const res = await fetch(
       `https://gateway.marvel.com/v1/public/characters/${id}?${apiKey}`
@@ -37,6 +38,7 @@ export default function Character(props: { match: any }) {
       setImages(
         `${data.results[0].thumbnail.path}/portrait_uncanny.${data.results[0].thumbnail.extension}`
       );
+      setDetailUrl(data.results[0].urls[0].url);
     });
   }, []);
   useEffect(() => {
@@ -52,6 +54,7 @@ export default function Character(props: { match: any }) {
         <CharacterOverview
           description={character.description}
           id={character.id}
+          detail={detailUrl}
         />
         <CharacterGallery images={images} />
         <CharacterComicsList comics={characterComics} />

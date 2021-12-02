@@ -10,6 +10,7 @@ export default function Creator(props: any) {
   const [creator, setCreator] = useState<any>({});
   const [creatorComics, setCreatorComics] = useState<any>();
   const [imgPath, setImagePath] = useState("");
+  const [detailUrl, setDetailUrl] = useState("");
 
   const recoveryCreator = async () => {
     const res = await fetch(
@@ -33,12 +34,13 @@ export default function Creator(props: any) {
       setImagePath(
         `${data.results[0].thumbnail.path}/standard_fantastic.${data.results[0].thumbnail.extension}`
       );
+      setDetailUrl(data.results[0].urls[0].url);
     });
   }, []);
   useEffect(() => {
     recoveryCreatorComics().then((data) => {
       setCreatorComics(data.results);
-      console.log(data.results)
+      console.log(data.results);
     });
   }, []);
   return (
@@ -49,7 +51,7 @@ export default function Creator(props: any) {
           imgPath={imgPath}
           name={`${creator.firstName} ${creator.lastName}`}
         />
-        <CreatorOverview id={creator.id} />
+        <CreatorOverview id={creator.id} detail={detailUrl} />
         <CreatorComicsList comics={creatorComics} />
       </section>
     </section>

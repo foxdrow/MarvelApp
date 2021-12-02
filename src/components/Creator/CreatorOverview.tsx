@@ -16,6 +16,15 @@ export default function CreatorOverview(props: any) {
             {props.description}
           </p>
         </div>
+        <div className="creator-overview_right-item">
+          <a
+            href={props.detail}
+            target="_blank"
+            className="creator-overview-btn"
+          >
+            MORE DETAIL
+          </a>
+        </div>
       </div>
     </section>
   );

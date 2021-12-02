@@ -39,6 +39,15 @@ export default function ComicOverview(props: any) {
           <h3 className="heading-3">Release date :</h3>
           <p>{props.date}</p>
         </div>
+        <div className="comic-overview_right-item">
+          <a
+            href={props.detail}
+            target="_blank"
+            className="comic-overview-btn"
+          >
+            MORE DETAIL
+          </a>
+        </div>
       </div>
     </section>
   );
