@@ -30,7 +30,6 @@ export default function Character(props: { match: any }) {
 
   useEffect(() => {
     recoveryCharacter().then((data) => {
-      console.log(data.results[0]);
       setCharacter(data.results[0]);
       setImagePath(
         `${data.results[0].thumbnail.path}/standard_fantastic.${data.results[0].thumbnail.extension}`

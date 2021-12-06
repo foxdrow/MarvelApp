@@ -41,7 +41,6 @@ export default function Comic(props: { match: any }) {
 
   useEffect(() => {
     recoveryComic().then((data) => {
-      console.log(data.results[0]);
       setComic(data.results[0]);
       setSeries(data.results[0].series);
       setImages(data.results[0].images);

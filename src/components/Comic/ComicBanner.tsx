@@ -1,9 +1,4 @@
-import React, { useEffect } from "react";
-
 export default function ComicBanner(props: any) {
-  // useEffect(() => {
-  //   console.log(props);
-  // }, []);
   return (
     <section className="comic-banner">
       <img src={props.imgPath} alt="" />

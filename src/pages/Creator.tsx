@@ -29,7 +29,6 @@ export default function Creator(props: any) {
 
   useEffect(() => {
     recoveryCreator().then((data) => {
-      console.log(data.results[0]);
       setCreator(data.results[0]);
       setImagePath(
         `${data.results[0].thumbnail.path}/standard_fantastic.${data.results[0].thumbnail.extension}`
@@ -40,7 +39,6 @@ export default function Creator(props: any) {
   useEffect(() => {
     recoveryCreatorComics().then((data) => {
       setCreatorComics(data.results);
-      console.log(data.results);
     });
   }, []);
   return (
