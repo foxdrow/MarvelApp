@@ -1,0 +1,15 @@
+version: '2.4'
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    command: ["yarn", "start"]
+    volumes:
+      - .:/app
+    # environment:
+    #   - REACT_APP_MARVEL_API_PUBLIC_KEY=
+    #   - REACT_APP_MARVEL_API_PRIVATE_KEY= 
