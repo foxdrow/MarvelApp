@@ -6,7 +6,6 @@ My marvel web app 🦸‍♂️
 &nbsp;
 
 ## Introduction
-***
 
 **Why this project ?**
 
@@ -21,7 +20,6 @@ This web app is built in React, Nodejs and styling with sass and is a glossary o
 &nbsp;
 
 ## Start the project
-***
 
 **First Method : Heroku hosting link**
 
