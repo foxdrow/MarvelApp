@@ -20,6 +20,7 @@ export default function AppRouter() {
                     <Route path="/comics/:id" component={Comic} exact={true} />
                     <Route path="/creators" component={Creators} exact={true} />
                     <Route path="/creators/:id" component={Creator} exact={true} />
+                    <Route path="*" component={Home} exact={true} />
                 </Switch>
             </Fragment>
         </BrowserRouter>
