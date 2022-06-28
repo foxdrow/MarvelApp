@@ -23,7 +23,7 @@ This web app is built in React, Nodejs and styling with sass and is a glossary o
 
 **First Method : Heroku hosting link**
 
-1. Just go to the hosting link : [Marlv-app](https://marvl-app.herokuapp.com/) 
+1. Just go to the hosting link : [Marlv-app](http://marvelapp.dev.raphaelsaverys.com/) 
 2. Wait that the application is started. (take few seconds)
 
 &nbsp;
